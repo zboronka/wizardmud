@@ -1,0 +1,12 @@
+server:
+    applicationConnectors:
+      - type: http
+        port: 2838
+    adminConnectors:
+      - type: http
+        port: 2839
+database:
+    driverClass: 'com.mysql.cj.jdbc.Driver'
+    user: 'root'
+    password: 'root'
+    url: 'jdbc:mysql://localhost:2837/mudDB'
