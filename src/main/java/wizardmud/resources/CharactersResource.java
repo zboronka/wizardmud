@@ -3,26 +3,22 @@ package wizardmud.resources;
 import wizardmud.api.MudCharacter;
 import wizardmud.api.MudCharacterUri;
 import wizardmud.dao.MudCharacterDao;
-import com.codahale.metrics.annotation.Timed;
 
 import org.jdbi.v3.core.Jdbi;
-import org.jdbi.v3.core.Handle;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.PathParam;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import javax.annotation.security.PermitAll;
 import javax.validation.Valid;
 
-import java.util.Optional;
 import java.util.ArrayList;
 
 @Path("/characters")
@@ -33,6 +29,7 @@ public class CharactersResource {
 		this.jdbi = jdbi;
 	}
 
+	@PermitAll
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response postCharacter(@Valid MudCharacter character, @Context UriInfo uri) {

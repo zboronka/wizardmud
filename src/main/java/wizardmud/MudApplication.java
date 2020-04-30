@@ -1,9 +1,13 @@
 package wizardmud;
 
+import wizardmud.auth.MudAuthenticator;
+import wizardmud.auth.MudUser;
 import wizardmud.resources.CharactersResource;
-import wizardmud.health.TemplateHealthCheck;
 
 import io.dropwizard.Application;
+import io.dropwizard.auth.AuthDynamicFeature;
+import io.dropwizard.auth.AuthValueFactoryProvider;
+import io.dropwizard.auth.basic.BasicCredentialAuthFilter;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
@@ -31,5 +35,11 @@ public class MudApplication extends Application<MudConfiguration> {
 		jdbi.installPlugin(new SqlObjectPlugin());
 		final CharactersResource resource = new CharactersResource(jdbi);
 		environment.jersey().register(resource);
+		environment.jersey().register(new AuthDynamicFeature(
+		            new BasicCredentialAuthFilter.Builder<MudUser>()
+		            .setAuthenticator(new MudAuthenticator())
+		            .setRealm("Character Creation")
+		            .buildAuthFilter()));
+		environment.jersey().register(new AuthValueFactoryProvider.Binder<>(MudUser.class));
 	}
 }

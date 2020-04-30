@@ -14,10 +14,15 @@ repositories {
     jcenter()
 }
 
+ext {
+	dropwizardversion = '2.0.5'
+}
+
 dependencies {
     // This dependency is used by the application.
-    implementation 'io.dropwizard:dropwizard-core:2.0.5'
-	implementation 'io.dropwizard:dropwizard-jdbi3:2.0.5'
+    implementation "io.dropwizard:dropwizard-core:$dropwizardversion"
+	implementation "io.dropwizard:dropwizard-jdbi3:$dropwizardversion"
+	implementation "io.dropwizard:dropwizard-auth:$dropwizardversion"
 	implementation 'mysql:mysql-connector-java:8.0.19'
 	implementation 'org.jdbi:jdbi3-sqlobject:3.12.2'
 }
