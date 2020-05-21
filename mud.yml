@@ -10,3 +10,6 @@ database:
     user: 'root'
     password: 'root'
     url: 'jdbc:mysql://localhost:2837/mudDB'
+firebase:
+    databaseUrl: 'https://wizardauth.firebaseio.com'
+    credentialPath: config/wizardauth-firebase-adminsdk-anr4k-587c7155f4.json

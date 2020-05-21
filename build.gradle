@@ -25,6 +25,7 @@ dependencies {
 	implementation "io.dropwizard:dropwizard-auth:$dropwizardversion"
 	implementation 'mysql:mysql-connector-java:8.0.19'
 	implementation 'org.jdbi:jdbi3-sqlobject:3.12.2'
+	implementation 'com.google.firebase:firebase-admin:4.1.2'
 }
 
 application {

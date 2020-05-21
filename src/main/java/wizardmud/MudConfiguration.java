@@ -19,6 +19,19 @@ public class MudConfiguration extends Configuration {
 	@NotNull
 	private DataSourceFactory database = new DataSourceFactory();
 
+	@Valid
+	@NotNull
+	@JsonProperty("firebase")
+	private FirebaseOptionsFactory firebaseOptions;
+
+	public FirebaseOptionsFactory getFirebaseOptionsFactory() {
+		return firebaseOptions;
+	}
+
+	public void setFirebaseOptionsFactory(FirebaseOptionsFactory firebaseOptions) {
+		this.firebaseOptions = firebaseOptions;
+	}
+
 	@JsonProperty("server")
 	public ServerFactory getServerFactory() {
 		return server;
